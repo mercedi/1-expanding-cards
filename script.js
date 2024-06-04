@@ -1,25 +1,9 @@
-const panel = document.querySelectorAll(".panel"); //call all panels
-
-for (let i = 0; i < panel.length; i++) {
-    panel[i].addEventListener("click", function() {
-        
-        let current = document.getElementsByClassName("active");
-        if (current.length > 0) {
-            current[0].className = current[0].className.replace("active", "");
-        }
-        //add the active class to current clicked
-        this.className += " active";
+const panels = document.querySelectorAll(".panel");
+//Each div with 'panel' is iterated and each element is added a event listener
+panels.forEach(panel => {
+    panel.addEventListener("click", function() {
+        //inside this forEach loop, each panel removes active class, after removed
+        panels.forEach(x => x.classList.remove("active"));
+        this.classList.add("active"); //'this' refers to current panel element that is clicked (adds the active class when clicked)
     });
-}
-
-function removeClass() {
-    for (let i = 0; i < panel.length; i++) {
-        panel[i].addEventListener("click", function() {
-            let bye = document.getElementsByClassName(".active");
-             if (panel.length < 0) {
-                bye.classList.remove(".active");
-             }
-        });
-    }
-}
-removeClass();
+});
